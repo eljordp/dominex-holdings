@@ -8,207 +8,24 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-<style>
-  :root{
-    --ink:#16202b;
-    --ink-soft:#3c4a59;
-    --muted:#6c7a89;
-    --line:#e4e1d9;
-    --paper:#fbfaf7;
-    --paper-2:#f4f1ea;
-    --navy:#1b2a3a;
-    --accent:#9a7b4f;
-    --accent-deep:#7d6238;
-    --white:#ffffff;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-    color:var(--ink);
-    background:var(--paper);
-    line-height:1.65;
-    font-size:17px;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.15;letter-spacing:-.01em;color:var(--ink)}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:1140px;margin:0 auto;padding:0 32px}
-  .eyebrow{
-    font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;
-    letter-spacing:.18em;text-transform:uppercase;color:var(--accent-deep);
-  }
-
-  /* Header */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(251,250,247,.88);
-    backdrop-filter:saturate(180%) blur(12px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{display:flex;align-items:center;justify-content:space-between;height:78px}
-  .brand{display:flex;align-items:baseline;gap:10px}
-  .brand .mark{font-family:'Fraunces',serif;font-size:23px;font-weight:600;letter-spacing:.01em;color:var(--ink)}
-  .brand .llc{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
-  nav.links{display:flex;gap:38px;align-items:center}
-  nav.links a{font-size:14.5px;color:var(--ink-soft);font-weight:500;transition:color .2s}
-  nav.links a:hover{color:var(--accent-deep)}
-  .btn{
-    display:inline-block;background:var(--navy);color:var(--white);
-    padding:13px 26px;border-radius:2px;font-size:14.5px;font-weight:500;
-    letter-spacing:.02em;transition:background .25s,transform .25s;
-    border:1px solid var(--navy);
-  }
-  .btn:hover{background:#0f1c29}
-  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
-  .btn.ghost:hover{background:var(--ink);color:var(--white)}
-  .menu-toggle{display:none;background:none;border:0;font-size:26px;color:var(--ink);cursor:pointer}
-
-  /* Hero */
-  .hero{padding:104px 0 96px;position:relative;overflow:hidden}
-  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:72px;align-items:center}
-  .hero h1{font-size:62px;margin:22px 0 26px}
-  .hero p.lead{font-size:19.5px;color:var(--ink-soft);max-width:520px;margin-bottom:38px}
-  .hero-cta{display:flex;gap:16px;flex-wrap:wrap}
-  .hero-aside{
-    border-left:1px solid var(--line);padding-left:44px;
-  }
-  .hero-aside .stat{margin-bottom:34px}
-  .hero-aside .stat:last-child{margin-bottom:0}
-  .hero-aside .num{font-family:'Fraunces',serif;font-size:42px;color:var(--navy);line-height:1}
-  .hero-aside .lbl{font-size:14px;color:var(--muted);margin-top:8px}
-  .rule{width:64px;height:2px;background:var(--accent);margin:0 0 4px}
-
-  /* Sections */
-  section{padding:96px 0}
-  .section-head{max-width:680px;margin-bottom:62px}
-  .section-head h2{font-size:42px;margin:18px 0 18px}
-  .section-head p{font-size:18px;color:var(--ink-soft)}
-
-  /* Services */
-  #services{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-  .svc{
-    padding:44px 38px 48px;border-right:1px solid var(--line);
-    transition:background .3s;
-  }
-  .svc:last-child{border-right:0}
-  .svc:hover{background:var(--paper)}
-  .svc .ix{font-family:'Fraunces',serif;font-size:15px;color:var(--accent);margin-bottom:26px}
-  .svc h3{font-size:24px;margin-bottom:14px}
-  .svc p{font-size:16px;color:var(--ink-soft)}
-  .svc ul{list-style:none;margin-top:20px}
-  .svc li{font-size:14.5px;color:var(--muted);padding:7px 0;border-top:1px solid var(--line)}
-
-  /* Approach / values */
-  #approach .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:start}
-  .values{display:grid;gap:2px}
-  .value{padding:30px 0;border-top:1px solid var(--line)}
-  .value:last-child{border-bottom:1px solid var(--line)}
-  .value h4{font-size:20px;margin-bottom:8px;display:flex;align-items:baseline;gap:14px}
-  .value h4 .vix{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--accent-deep);letter-spacing:.1em}
-  .value p{font-size:16px;color:var(--ink-soft);padding-left:34px}
-
-  /* Strip */
-  .strip{background:var(--navy);color:#eef1f4}
-  .strip .wrap{padding:84px 32px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-  .strip h2{color:#fff;font-size:38px}
-  .strip p{color:#b9c4d0;font-size:18px;margin-top:18px}
-  .strip .rule{background:var(--accent)}
-  .strip blockquote{
-    font-family:'Fraunces',serif;font-size:25px;line-height:1.45;color:#fff;font-style:italic;
-    border-left:2px solid var(--accent);padding-left:30px;
-  }
-  .strip cite{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:14px;color:#9fb0bf;margin-top:20px;letter-spacing:.04em}
-
-  /* Process */
-  #process{background:var(--paper-2)}
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;margin-top:14px}
-  .step .n{font-family:'Fraunces',serif;font-size:17px;color:var(--accent);border-top:2px solid var(--accent);padding-top:18px;display:inline-block;width:100%}
-  .step h4{font-size:19px;margin:14px 0 10px}
-  .step p{font-size:15px;color:var(--ink-soft)}
-
-  /* Contact */
-  #contact .wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px}
-  .contact-card{
-    background:var(--white);border:1px solid var(--line);padding:46px 44px;
-  }
-  .contact-card h3{font-size:26px;margin-bottom:22px}
-  .field{display:block;margin-bottom:20px}
-  .field label{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-  .field input,.field textarea{
-    width:100%;padding:13px 15px;border:1px solid var(--line);background:var(--paper);
-    font-family:inherit;font-size:15.5px;color:var(--ink);border-radius:2px;transition:border-color .2s;
-  }
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
-  .field textarea{resize:vertical;min-height:120px}
-  .detail{padding:18px 0;border-top:1px solid var(--line)}
-  .detail:first-of-type{border-top:0}
-  .detail .k{font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-deep);font-weight:600;margin-bottom:6px}
-  .detail .v{font-size:17px;color:var(--ink-soft)}
-  .detail .v a:hover{color:var(--accent-deep)}
-
-  /* Footer */
-  footer{background:var(--ink);color:#aeb8c2;padding:56px 0 40px}
-  footer .wrap{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px}
-  footer .mark{font-family:'Fraunces',serif;font-size:21px;color:#fff;margin-bottom:8px}
-  footer .fnote{font-size:13.5px;max-width:340px;line-height:1.7}
-  footer .fcol h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#7f8b97;margin-bottom:14px;font-weight:600}
-  footer .fcol a,footer .fcol p{display:block;font-size:14.5px;color:#aeb8c2;margin-bottom:8px;transition:color .2s}
-  footer .fcol a:hover{color:#fff}
-  .legal{border-top:1px solid #2a3744;margin-top:46px;padding-top:24px;font-size:13px;color:#7f8b97}
-
-  @media(max-width:920px){
-    .hero .wrap{grid-template-columns:1fr;gap:48px}
-    .hero-aside{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:36px;display:flex;gap:48px}
-    .hero-aside .stat{margin-bottom:0}
-    .grid3{grid-template-columns:1fr}
-    .svc{border-right:0;border-bottom:1px solid var(--line)}
-    #approach .wrap,.strip .wrap,#contact .wrap{grid-template-columns:1fr;gap:46px}
-    .steps{grid-template-columns:1fr 1fr}
-  }
-  @media(max-width:640px){
-    body{font-size:16px}
-    .wrap{padding:0 22px}
-    .nav{height:66px}
-    nav.links{display:none}
-    .menu-toggle{display:block}
-    header .btn{display:none}
-    .brand .mark{font-size:20px}
-    .hero{padding:60px 0 64px}
-    .hero h1{font-size:39px}
-    .hero p.lead{font-size:17.5px}
-    .hero-cta{flex-direction:column;align-items:stretch}
-    .hero-cta .btn{text-align:center}
-    section{padding:64px 0}
-    .section-head{margin-bottom:42px}
-    .section-head h2,.strip h2,#approach h2{font-size:30px}
-    .hero h1 br{display:none}
-    .steps{grid-template-columns:1fr}
-    .svc{padding:34px 26px 38px}
-    .contact-card{padding:34px 26px}
-    .hero-aside{flex-direction:column;gap:30px}
-    .strip .wrap{padding:60px 22px}
-    .strip blockquote{font-size:21px}
-    footer .wrap{flex-direction:column;gap:26px}
-  }
-</style>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <header>
   <div class="wrap nav">
-    <div class="brand">
+    <a href="index.html" class="brand">
       <span class="mark">Dominex Holdings</span>
       <span class="llc">LLC</span>
-    </div>
+    </a>
     <nav class="links">
-      <a href="#services">Services</a>
-      <a href="#approach">Approach</a>
-      <a href="#process">Engagement</a>
-      <a href="#contact">Contact</a>
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="process.html">Engagement</a>
+      <a href="contact.html">Contact</a>
     </nav>
-    <a href="#contact" class="btn">Request a Consultation</a>
+    <a href="contact.html" class="btn">Request a Consultation</a>
     <button class="menu-toggle" aria-label="Menu">☰</button>
   </div>
 </header>
@@ -221,8 +38,8 @@
       <h1>Clear strategy.<br />Sound operations.<br />Earned trust.</h1>
       <p class="lead">Dominex Holdings partners with owners and leadership teams to sharpen strategy, strengthen operations, and build organizations that last — guided in every engagement by integrity and a steady hand.</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn">Start a Conversation</a>
-        <a href="#services" class="btn ghost">Explore Our Services</a>
+        <a href="contact.html" class="btn">Start a Conversation</a>
+        <a href="services.html" class="btn ghost">Explore Our Services</a>
       </div>
     </div>
     <aside class="hero-aside">
@@ -245,57 +62,45 @@
   </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services">
+<!-- SERVICES TEASER -->
+<section class="bg-white">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">What We Do</span>
       <h2>Consulting built around how your business actually runs</h2>
       <p>We work alongside your team — not above it — translating goals into decisions, and decisions into measurable progress.</p>
     </div>
-    <div class="grid3">
+  </div>
+  <div class="wrap">
+    <div class="grid3" style="border:1px solid var(--line)">
       <div class="svc">
         <div class="ix">01</div>
         <h3>Expert Consulting</h3>
         <p>An objective, experienced perspective on the questions that keep leadership up at night — from growth and structure to risk and resourcing.</p>
-        <ul>
-          <li>Leadership &amp; organizational advisory</li>
-          <li>Market &amp; competitive assessment</li>
-          <li>Decision support &amp; due diligence</li>
-        </ul>
       </div>
       <div class="svc">
         <div class="ix">02</div>
         <h3>Strategic Planning</h3>
         <p>A practical, prioritized roadmap that aligns your team around where you're going and the concrete steps to get there.</p>
-        <ul>
-          <li>Vision, goals &amp; KPIs</li>
-          <li>Growth &amp; market strategy</li>
-          <li>Financial &amp; capital planning</li>
-        </ul>
       </div>
       <div class="svc">
         <div class="ix">03</div>
         <h3>Operational Support</h3>
-        <p>Hands-on help building the processes, systems, and accountability that turn a good plan into reliable day-to-day execution.</p>
-        <ul>
-          <li>Process &amp; workflow design</li>
-          <li>Performance &amp; reporting systems</li>
-          <li>Implementation &amp; change management</li>
-        </ul>
+        <p>Hands-on help building the processes, systems, and accountability that turn a good plan into reliable execution.</p>
       </div>
     </div>
+    <div style="margin-top:40px"><a href="services.html" class="btn ghost">See Full Services</a></div>
   </div>
 </section>
 
-<!-- APPROACH -->
-<section id="approach">
-  <div class="wrap">
+<!-- APPROACH TEASER -->
+<section>
+  <div class="wrap split">
     <div>
       <span class="eyebrow">Our Approach</span>
       <h2 style="font-size:42px;margin:18px 0 22px">Relationships first.<br />Results follow.</h2>
       <p style="font-size:18px;color:var(--ink-soft)">We believe the best advice is earned through trust. Every engagement begins with listening — to your business, your people, and your goals — and is held to a standard of honesty we'd want for our own company.</p>
-      <a href="#contact" class="btn ghost" style="margin-top:32px">Work With Us</a>
+      <a href="about.html" class="btn ghost" style="margin-top:32px">Our Approach &amp; Values</a>
     </div>
     <div class="values">
       <div class="value">
@@ -309,10 +114,6 @@
       <div class="value">
         <h4><span class="vix">III.</span> Accountable to outcomes</h4>
         <p>We measure success the way you do — in results that hold up long after the engagement ends.</p>
-      </div>
-      <div class="value">
-        <h4><span class="vix">IV.</span> A genuine partner</h4>
-        <p>We stay close to the work and to your team, building capability that remains when we're gone.</p>
       </div>
     </div>
   </div>
@@ -333,86 +134,16 @@
   </div>
 </div>
 
-<!-- PROCESS -->
-<section id="process">
+<!-- CTA -->
+<div class="cta-band">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">How We Engage</span>
-      <h2>A clear, deliberate path from first call to lasting result</h2>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <span class="n">01</span>
-        <h4>Listen &amp; Assess</h4>
-        <p>We learn your business, surface the real challenges, and define what success looks like together.</p>
-      </div>
-      <div class="step">
-        <span class="n">02</span>
-        <h4>Diagnose &amp; Plan</h4>
-        <p>We pinpoint root causes and build a prioritized, practical strategy with clear ownership and milestones.</p>
-      </div>
-      <div class="step">
-        <span class="n">03</span>
-        <h4>Implement</h4>
-        <p>We work shoulder-to-shoulder with your team to put plans into motion and adjust as conditions change.</p>
-      </div>
-      <div class="step">
-        <span class="n">04</span>
-        <h4>Sustain</h4>
-        <p>We leave behind systems, skills, and accountability so progress continues well past our engagement.</p>
-      </div>
-    </div>
+    <span class="eyebrow">Get Started</span>
+    <h2 style="margin-top:14px">Let's talk about where your business is headed</h2>
+    <p>Tell us a little about your company and what you're working through. We'll respond personally to arrange an introductory conversation — no obligation.</p>
+    <a href="contact.html" class="btn">Request a Consultation</a>
   </div>
-</section>
+</div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="wrap">
-    <div>
-      <span class="eyebrow">Contact</span>
-      <h2 style="font-size:40px;margin:18px 0 22px">Let's talk about where your business is headed</h2>
-      <p style="font-size:18px;color:var(--ink-soft);margin-bottom:40px">Tell us a little about your company and what you're working through. We'll respond personally to arrange an introductory conversation — no obligation.</p>
-
-      <div class="detail">
-        <div class="k">Email</div>
-        <div class="v"><a href="mailto:abe@meaship.com">abe@meaship.com</a></div>
-      </div>
-      <div class="detail">
-        <div class="k">Office</div>
-        <div class="v">30 N Gould St, Ste R<br />Sheridan, WY 82801</div>
-      </div>
-      <div class="detail">
-        <div class="k">Engagements</div>
-        <div class="v">Available to owners and leadership teams nationwide</div>
-      </div>
-    </div>
-
-    <div class="contact-card">
-      <h3>Request a Consultation</h3>
-      <form action="mailto:abe@meaship.com" method="post" enctype="text/plain">
-        <label class="field">
-          <span>Name</span>
-          <input type="text" name="name" placeholder="Your full name" required />
-        </label>
-        <label class="field">
-          <span>Company</span>
-          <input type="text" name="company" placeholder="Your business" />
-        </label>
-        <label class="field">
-          <span>Email</span>
-          <input type="email" name="email" placeholder="you@company.com" required />
-        </label>
-        <label class="field">
-          <span>How can we help?</span>
-          <textarea name="message" placeholder="Briefly describe what you're working through." required></textarea>
-        </label>
-        <button type="submit" class="btn" style="width:100%;cursor:pointer">Send Inquiry</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
   <div class="wrap">
     <div>
@@ -421,10 +152,10 @@
     </div>
     <div class="fcol">
       <h5>Firm</h5>
-      <a href="#services">Services</a>
-      <a href="#approach">Approach</a>
-      <a href="#process">Engagement</a>
-      <a href="#contact">Contact</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="process.html">Engagement</a>
+      <a href="contact.html">Contact</a>
     </div>
     <div class="fcol">
       <h5>Reach Us</h5>
@@ -438,18 +169,6 @@
   </div>
 </footer>
 
-<script>
-  document.getElementById('yr').textContent = new Date().getFullYear();
-  document.querySelector('.menu-toggle').addEventListener('click', function(){
-    var links = document.querySelector('nav.links');
-    var open = links.style.display === 'flex';
-    links.style.display = open ? 'none' : 'flex';
-    if(!open){
-      links.style.position='absolute';links.style.top='78px';links.style.left='0';
-      links.style.right='0';links.style.flexDirection='column';links.style.background='var(--paper)';
-      links.style.padding='24px 32px';links.style.borderBottom='1px solid var(--line)';links.style.gap='20px';
-    }
-  });
-</script>
+<script src="nav.js"></script>
 </body>
 </html>
