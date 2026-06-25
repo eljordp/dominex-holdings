@@ -77,6 +77,17 @@ nav.links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6p
 .hero-aside .lbl{font-size:14px;color:var(--muted);margin-top:8px}
 .rule{width:64px;height:2px;background:var(--accent);margin:0 0 4px}
 
+/* Image bands */
+.imgband{position:relative;width:100%;height:clamp(300px,44vw,560px);overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.imgband img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.imgband.tint::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(22,32,43,.55),rgba(22,32,43,.05) 55%)}
+.imgband .caption{position:absolute;left:0;right:0;bottom:0;z-index:2}
+.imgband .caption .wrap{padding-bottom:38px}
+.imgband .caption .eyebrow{color:#e7d9c4;display:block;margin-bottom:10px}
+.imgband .caption h3{color:#fff;font-size:30px;max-width:600px}
+.figure{border:1px solid var(--line);overflow:hidden;background:var(--paper-2)}
+.figure img{width:100%;display:block;aspect-ratio:4/3;object-fit:cover}
+
 /* Sections */
 section{padding:96px 0}
 .section-head{max-width:680px;margin-bottom:62px}
