@@ -78,7 +78,7 @@
 
     <div class="contact-card">
       <h3>Request a Consultation</h3>
-      <form action="mailto:abe@meaship.com" method="post" enctype="text/plain">
+      <form id="contactForm" novalidate>
         <label class="field">
           <span>Name</span>
           <input type="text" name="name" placeholder="Your full name" required />
@@ -95,7 +95,8 @@
           <span>How can we help?</span>
           <textarea name="message" placeholder="Briefly describe what you're working through." required></textarea>
         </label>
-        <button type="submit" class="btn" style="width:100%">Send Inquiry</button>
+        <button type="submit" class="btn" id="submitBtn" style="width:100%">Send Inquiry</button>
+        <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
@@ -127,5 +128,47 @@
 </footer>
 
 <script src="nav.js"></script>
+<script>
+(function(){
+  var form = document.getElementById('contactForm');
+  if(!form) return;
+  var btn = document.getElementById('submitBtn');
+  var status = document.getElementById('formStatus');
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    status.className = 'form-status';
+    status.textContent = '';
+    var data = {
+      name: form.name.value.trim(),
+      company: form.company.value.trim(),
+      email: form.email.value.trim(),
+      message: form.message.value.trim()
+    };
+    if(!data.name || !data.email || !data.message){
+      status.classList.add('err'); status.textContent = 'Please complete name, email, and message.'; return;
+    }
+    btn.disabled = true; var label = btn.textContent; btn.textContent = 'Sending…';
+    try{
+      var res = await fetch('/api/contact', {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)
+      });
+      var out = await res.json().catch(function(){return {};});
+      if(res.ok){
+        form.reset();
+        status.classList.add('ok');
+        status.textContent = 'Thank you — your message is on its way. We’ll be in touch shortly.';
+      } else {
+        status.classList.add('err');
+        status.textContent = out.error || 'Something went wrong. Please email abe@meaship.com directly.';
+      }
+    }catch(err){
+      status.classList.add('err');
+      status.textContent = 'Network error. Please email abe@meaship.com directly.';
+    }finally{
+      btn.disabled = false; btn.textContent = label;
+    }
+  });
+})();
+</script>
 </body>
 </html>
