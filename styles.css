@@ -203,7 +203,6 @@ footer .fcol a:hover{color:#fff}
   section{padding:64px 0}
   .section-head{margin-bottom:42px}
   .section-head h2,.strip h2,.cta-band h2{font-size:30px}
-  .hero h1 br{display:none}
   .steps{grid-template-columns:1fr}
   .steps.vert .step{grid-template-columns:1fr;gap:8px}
   .svc{padding:34px 26px 38px}
